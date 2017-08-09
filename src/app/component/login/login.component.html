@@ -1,0 +1,43 @@
+<!-- Login -->
+<section id="login">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-6">
+        <div class="form-wrap">
+          <h1>Login</h1>
+          <form [formGroup]="myForm" novalidate autocomplete="off" (ngSubmit)="loginUser(myForm.value,myForm.valid)">
+            <!-- Login Name -->
+            <div class="form-group">
+              <label for="loginName">Login Name:</label>
+              <input type="text" class="form-control" formControlName="loginName" name="loginName" placeholder="Enter Login Name">
+              <div *ngIf="myForm.controls['loginName'].errors && (myForm.controls['loginName'].dirty || myForm.controls['loginName'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="myForm.controls['loginName'].hasError('required')">
+                  Login is required.
+                </div>
+              </div>
+            </div>
+            <!-- Password -->
+            <div class="form-group">
+              <label for="loginPassword">Password:</label>
+              <input type="password" class="form-control" formControlName="loginPassword" name="loginPassword" placeholder="Enter Password">
+              <div *ngIf="myForm.controls['loginPassword'].errors && (myForm.controls['loginPassword'].dirty || myForm.controls['loginPassword'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="myForm.controls['loginPassword'].hasError('required')">
+                  Password is required.
+                </div>
+              </div>
+            </div>
+            <input type="submit" id="btn-submit" class="btn btn-success btn-lg btn-block" value="Login">
+            <!-- Form reset button -->
+            <input type="button" id="btn-reset" class="btn btn-info btn-lg btn-block" value="Reset" (click)="resetForm()">
+          </form>
+        </div>
+      </div>
+      <div class="col-md-3">
+      </div>
+    </div>
+  </div>
+</section>
